@@ -52,4 +52,11 @@ public class Table {
                 .mapToInt(Order::getAmount)
                 .sum();
     }
+
+    public List<Order> getOrders() {
+        if (orders.isEmpty()) {
+            throw new IllegalArgumentException(ErrorMessage.NO_ORDER_TABLE.getMessage());
+        }
+        return Collections.unmodifiableList(orders);
+    }
 }

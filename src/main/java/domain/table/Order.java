@@ -6,6 +6,7 @@ import message.ErrorMessage;
 public class Order {
     private static final int MIN_AMOUNT = 1;
     private static final int MAX_AMOUNT = 99;
+    private static final String ORDER_FORMAT = "%s %d %d";
     private final Menu menu;
     private int amount;
 
@@ -23,5 +24,10 @@ public class Order {
 
     public int getAmount() {
         return amount;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(ORDER_FORMAT, menu.getName(), amount, menu.getPrice());
     }
 }

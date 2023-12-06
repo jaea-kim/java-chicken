@@ -1,8 +1,9 @@
 package view;
 
 import domain.Command;
-import domain.Menu;
-import domain.Table;
+import domain.menu.Menu;
+import domain.table.Order;
+import domain.table.Table;
 
 import java.util.List;
 
@@ -60,6 +61,14 @@ public class OutputView {
     private static void printCommands(final List<Command> commands) {
         for (Command command : commands) {
             System.out.printf(COMMAND_FORMAT, command.getCode(), command.getDescription());
+        }
+        System.out.println();
+    }
+
+    public static void printOrders(final List<Order> orders) {
+        System.out.println("메뉴 수량 금액");
+        for (Order order : orders) {
+            System.out.println(order);
         }
         System.out.println();
     }
