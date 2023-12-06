@@ -22,12 +22,7 @@ public class MainController {
             if (command.equals(Command.EXIT)) {
                 break;
             }
-            if (command.equals(Command.REGISTER)) {
-                registerController.execute();
-            }
-            if (command.equals(Command.PAYMENT)) {
-                paymentController.execute();
-            }
+            handleCommand(command);
         }
     }
 
@@ -39,6 +34,15 @@ public class MainController {
             } catch (IllegalArgumentException e) {
                 OutputView.printMessage(e.getMessage());
             }
+        }
+    }
+
+    public void handleCommand(Command command) {
+        if (command.equals(Command.REGISTER)) {
+            registerController.execute();
+        }
+        if (command.equals(Command.PAYMENT)) {
+            paymentController.execute();
         }
     }
 }
