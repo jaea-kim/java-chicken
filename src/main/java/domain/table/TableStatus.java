@@ -1,4 +1,4 @@
-package domain;
+package domain.table;
 
 public enum TableStatus {
     ACTIVE("#"),
