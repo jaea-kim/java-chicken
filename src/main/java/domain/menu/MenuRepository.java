@@ -1,6 +1,6 @@
 package domain.menu;
 
-import domain.Category;
+import message.ErrorMessage;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,5 +22,14 @@ public class MenuRepository {
 
     public static List<Menu> menus() {
         return Collections.unmodifiableList(menus);
+    }
+
+    public static Menu findByMenuNumber(int menuNumber) {
+        for (Menu menu : menus) {
+            if (menu.eqaulsMenuNumber(menuNumber)) {
+                return menu;
+            }
+        }
+        throw new IllegalArgumentException(ErrorMessage.NO_MENU.getMessage());
     }
 }

@@ -23,4 +23,24 @@ public class InputView {
             throw new IllegalArgumentException(ErrorMessage.NO_MENU.getMessage());
         }
     }
+
+    public static int inputMenuNumber() {
+        try {
+            System.out.println("## 등록할 메뉴를 선택하세요.");
+            String input = Console.readLine();
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.NO_MENU.getMessage());
+        }
+    }
+
+    public static int inputMenuAmount() {
+        try {
+            System.out.println("## 메뉴의 수량을 입력하세요.");
+            String input = Console.readLine();
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.NO_MENU_COUNT.getMessage());
+        }
+    }
 }

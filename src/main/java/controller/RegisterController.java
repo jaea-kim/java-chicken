@@ -2,6 +2,7 @@ package controller;
 
 import domain.menu.Menu;
 import domain.menu.MenuRepository;
+import domain.table.Order;
 import domain.table.Table;
 import domain.table.TableRepository;
 import view.InputView;
@@ -14,9 +15,43 @@ public class RegisterController {
         printTableInfo();
         Table table = inputTable();
         printMenuInfo();
-        //메뉴 선택
-        //메뉴 수량 입력
-        //주문 객체 + 테이블 상태 테이블 객체 업데이트 -> 레포 저장
+        Order order = inputOrder();
+        registerOrder(table, order);
+    }
+
+    private void registerOrder(Table table, Order order) {
+        try {
+            table.updateOrder(order);
+        } catch (IllegalArgumentException e) {
+            OutputView.printMessage(e.getMessage());
+        }
+    }
+
+    private Order inputOrder() {
+        Menu menu = inputMenu();
+        return createOrderWith(menu);
+    }
+
+    private Order createOrderWith(Menu menu) {
+        while (true) {
+            try {
+                int amount = InputView.inputMenuAmount();
+                return new Order(menu, amount);
+            } catch (IllegalArgumentException e) {
+                OutputView.printMessage(e.getMessage());
+            }
+        }
+    }
+
+    private Menu inputMenu() {
+        while (true) {
+            try {
+                int menuNumber = InputView.inputMenuNumber();
+                return MenuRepository.findByMenuNumber(menuNumber);
+            } catch (IllegalArgumentException e) {
+                OutputView.printMessage(e.getMessage());
+            }
+        }
     }
 
     private void printMenuInfo() {

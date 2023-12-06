@@ -1,7 +1,5 @@
 package domain.menu;
 
-import domain.Category;
-
 public class Menu {
     private final int number;
     private final String name;
@@ -18,5 +16,9 @@ public class Menu {
     @Override
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";
+    }
+
+    public boolean eqaulsMenuNumber(int menuNumber) {
+        return number == menuNumber;
     }
 }
