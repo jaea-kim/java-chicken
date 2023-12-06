@@ -1,5 +1,7 @@
 package domain.table;
 
+import message.ErrorMessage;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -18,5 +20,14 @@ public class TableRepository {
 
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
+    }
+
+    public static Table findByTableNumber(int tableNumber) {
+        for (Table table : tables) {
+            if (table.eqaulsTableNumber(tableNumber)) {
+                return table;
+            }
+        }
+        throw new IllegalArgumentException(ErrorMessage.NO_TABLE.getMessage());
     }
 }

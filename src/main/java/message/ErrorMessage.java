@@ -1,6 +1,7 @@
 package message;
 
 public enum ErrorMessage {
+    NO_TABLE("잘못된 테이블을 선택하였습니다."),
     NO_COMMAND("잘못된 기능을 선택하였습니다."),
     NO_MENU("입력된 메뉴가 없습니다."),
     NO_MENU_COUNT("입력된 메뉴의 수량이 잘못되었습니다."),
