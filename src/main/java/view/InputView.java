@@ -43,4 +43,14 @@ public class InputView {
             throw new IllegalArgumentException(ErrorMessage.NO_MENU_COUNT.getMessage());
         }
     }
+
+    public static int inputPaymentCode() {
+        try {
+            System.out.println("## 신용 카드는 1번, 현금은 2번");
+            String input = Console.readLine();
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.NO_MENU_COUNT.getMessage());
+        }
+    }
 }

@@ -25,6 +25,10 @@ public class Table {
         return status;
     }
 
+    public int getNumber() {
+        return number;
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);
@@ -46,7 +50,7 @@ public class Table {
         }
     }
 
-    private int getTotalAmount() {
+    public int getTotalAmount() {
         //TODO: 주문 객체 일급컬렉션으로 생성시 현재 수량을 반환하는 메소드로 변경
         return orders.stream()
                 .mapToInt(Order::getAmount)
@@ -58,5 +62,16 @@ public class Table {
             throw new IllegalArgumentException(ErrorMessage.NO_ORDER_TABLE.getMessage());
         }
         return Collections.unmodifiableList(orders);
+    }
+
+    public int getTotalPaymentAmount() {
+        return orders.stream()
+                .mapToInt(Order::getPaymentAmount)
+                .sum();
+    }
+
+    public void payment() {
+        orders.clear();
+        status = TableStatus.DISABLE;
     }
 }

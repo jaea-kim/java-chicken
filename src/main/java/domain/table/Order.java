@@ -26,6 +26,10 @@ public class Order {
         return amount;
     }
 
+    public int getPaymentAmount() {
+        return amount * menu.getPrice();
+    }
+
     @Override
     public String toString() {
         return String.format(ORDER_FORMAT, menu.getName(), amount, menu.getPrice());
