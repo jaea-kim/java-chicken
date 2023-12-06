@@ -8,7 +8,6 @@ import java.util.List;
 
 public class Table {
     private static final int MAX_TOTAL_AMOUNT = 99;
-    //TODO: 테이블 번호 enum으로 변경
     private final int number;
 
     //TODO: 일급컬렉션으로 분리
