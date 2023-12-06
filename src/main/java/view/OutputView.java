@@ -1,5 +1,6 @@
 package view;
 
+import domain.Command;
 import domain.Menu;
 import domain.Table;
 
@@ -9,6 +10,7 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String STATUS_FORMAT = "└ %s ┘";
+    private static final String COMMAND_FORMAT = "%d - %s%n";
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
@@ -42,5 +44,23 @@ public class OutputView {
         for (final Table table : tables) {
             System.out.printf(STATUS_FORMAT, table.getTableStatus().getMessage());
         }
+        System.out.println();
+    }
+
+    public static void printMessage(String message) {
+        System.out.println(message);
+    }
+
+    public static void printMainView(List<Command> commands) {
+        System.out.println("## 메인 화면");
+        commands.sort(Command.codeComparator);
+        printCommands(commands);
+    }
+
+    private static void printCommands(final List<Command> commands) {
+        for (Command command : commands) {
+            System.out.printf(COMMAND_FORMAT, command.getCode(), command.getDescription());
+        }
+        System.out.println();
     }
 }
