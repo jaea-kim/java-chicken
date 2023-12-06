@@ -10,7 +10,8 @@ import java.util.List;
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
-    private static final String STATUS_FORMAT = "└ %s ┘";
+    private static final String STATUS_ACTIVE_FORMAT = "└ # ┘";
+    private static final String STATUS_DISABLE_FORMAT = "└ ─ ┘";
     private static final String COMMAND_FORMAT = "%d - %s%n";
 
     public static void printTables(final List<Table> tables) {
@@ -43,9 +44,16 @@ public class OutputView {
 
     private static void printTableStatus(final List<Table> tables) {
         for (final Table table : tables) {
-            System.out.printf(STATUS_FORMAT, table.getTableStatus().getMessage());
+            System.out.printf(tableStatus(table.isDisable()));
         }
         System.out.println();
+    }
+
+    private static String tableStatus(boolean tableStatus) {
+        if (tableStatus) {
+            return STATUS_DISABLE_FORMAT;
+        }
+        return STATUS_ACTIVE_FORMAT;
     }
 
     public static void printMessage(String message) {
