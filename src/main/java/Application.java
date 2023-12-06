@@ -1,21 +1,13 @@
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Table;
-import domain.TableRepository;
-import view.InputView;
-import view.OutputView;
-
-import java.util.List;
+import controller.MainController;
+import controller.PaymentController;
+import controller.RegisterController;
 
 public class Application {
-    // TODO 구현 진행
     public static void main(String[] args) {
-        final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables);
+        RegisterController registerController = new RegisterController();
+        PaymentController paymentController = new PaymentController();
 
-        final int tableNumber = InputView.inputTableNumber();
-
-        final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
+        MainController mainController = new MainController(registerController, paymentController);
+        mainController.execute();
     }
 }
