@@ -74,6 +74,7 @@ public class OutputView {
     }
 
     public static void printOrders(final List<Order> orders) {
+        System.out.println("## 주문 내역");
         System.out.println("메뉴 수량 금액");
         for (Order order : orders) {
             System.out.println(order);
@@ -82,7 +83,7 @@ public class OutputView {
     }
 
     public static void printPaymentTable(int number) {
-        System.out.printf("%d번 테이블의 결제를 진행합니다.%n", number);
+        System.out.printf("## %d번 테이블의 결제를 진행합니다.%n", number);
     }
 
     public static void printTotalPaymentAmount(int totalPaymentAmount) {
